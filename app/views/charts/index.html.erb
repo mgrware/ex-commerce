@@ -1,0 +1,27 @@
+<h3>My Chart</h3>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">SKU</th>
+      <th scope="col">Name</th>
+      <th scope="col">Description</th>
+      <th scope="col">Price</th>
+    </tr>
+  </thead>
+  <tbody>
+  	<% @chart.items.each do |item| %>
+	    <tr>
+	      <th scope="row"><%= item.product.sku %></th>
+	      <td> <%= item.product.name %> </td>
+	      <td> <%= item.product.description%></td>
+	      <td> <%= item.amount %> </td>
+	    </tr>
+    <% end %>
+    <tr>
+    	<th colspan="3" > Total</th>
+    	<td> <%= @chart.total_amount %>  </td>
+    </tr>
+  </tbody>
+</table>
+
+  <%= link_to "Checkout", checkouts_path(chart_id: @chart.id), class: "btn btn-primary"%>

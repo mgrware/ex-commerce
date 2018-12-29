@@ -1,0 +1,55 @@
+<div class="row">
+	<div class="col-md-6">
+		<%= form_for :billing_address, html: {id: "billing-form"} do |f| %>
+			<div class="form-group">
+		    	<label for="exampleFormControlInput1">Name</label>
+		    	<%= f.text_field :name, class: "form-control", placeholder: "John doe" %>
+		    </div>
+		  	<div class="form-group">
+		    	<label for="exampleFormControlInput1">Email address</label>
+		    	<%= f.text_field :email, class: "form-control", placeholder: "name@example.com" %>
+		    	<%= hidden_field_tag :chart_id, params[:chart_id]%>
+		  	</div>
+		  <div class="form-group">
+		    	<label for="exampleFormControlInput1">Card Number</label>
+		    <%= f.text_field :card_number, class: "form-control", placeholder: "12345667" %>
+		  </div>
+		  <div class="form-group">
+		    <label for="exampleFormControlInput1">Phone Number</label>
+		    <%= f.text_field :phone_number, class: "form-control", placeholder: "name@example.com" %>
+		  </div>
+		  <div class="form-group">
+		    <label for="exampleFormControlTextarea1">Address</label>
+		    <%= f.text_area :address, class: "form-control", rows: "3" %>
+		  </div>
+		<% end %>
+	</div>
+	<div class="col-md-6">
+		<h3>My Chart</h3>
+		<table class="table table-bordered">
+		  <thead>
+		    <tr>
+		      <th scope="col">SKU</th>
+		      <th scope="col">Name</th>
+		      <th scope="col">Description</th>
+		      <th scope="col">Price</th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		  	<% @chart.items.each do |item| %>
+			    <tr>
+			      <th scope="row"><%= item.product.sku %></th>
+			      <td> <%= item.product.name %> </td>
+			      <td> <%= item.product.description%></td>
+			      <td> <%= item.amount %> </td>
+			    </tr>
+		    <% end %>
+		    <tr>
+		    	<th colspan="3" > Total</th>
+		    	<td> <%= @chart.total_amount %>  </td>
+		    </tr>
+		  </tbody>
+		</table>
+	</div>
+	<%= link_to "Payment via Payla", "javascript:void(0)", class: "btn btn-primary", id: "payla-btn-action"%>
+</div>

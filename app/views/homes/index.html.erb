@@ -1,0 +1,17 @@
+<%= link_to "My Chart (#{Item.count})", charts_path, class: "btn btn-success"  %>
+<div class="row">
+	<% @products.each do |product| %>
+		<div class="col-md-3" style="padding-top: 10px;">
+			<div class="card" style="width: 18rem;">
+			  <img class="card-img-top" src="https://static.toiimg.com/thumb/msid-65452723,width-640,resizemode-4/65452723.jpg" alt="Card image cap">
+			  <div class="card-body">
+			    <h5 class="card-title"> <%= product.name %></h5>
+			    <p class="card-text"> Rp. <%= product.price %></p>
+			    <p class="card-text"><%= product.description %></p>
+			    <!-- <a href="#" class="btn btn-primary">Add To Chart</a> -->
+			    <%= link_to "add to chart", add_charts_path(product_id: product.id), method: "Post", class: "btn btn-primary"%>
+			  </div>
+			</div>
+		</div>
+	<% end %>
+</div>
