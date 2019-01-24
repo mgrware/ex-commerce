@@ -16,7 +16,7 @@
 		  </div>
 		  <div class="form-group">
 		    <label for="exampleFormControlInput1">Phone Number</label>
-		    <%= f.text_field :phone_number, class: "form-control", placeholder: "name@example.com" %>
+		    <%= f.text_field :phone_number, class: "form-control", placeholder: "0812344131231" %>
 		  </div>
 		  <div class="form-group">
 		    <label for="exampleFormControlTextarea1">Address</label>
@@ -51,5 +51,5 @@
 		  </tbody>
 		</table>
 	</div>
-	<%= link_to "Payment via Payla", "javascript:void(0)", class: "btn btn-primary", id: "payla-btn-action"%>
+	<%= link_to "Payment via Payla", "javascript:void(0)", class: "btn btn-primary", id: "payla-btn-action", onclick: "$('#billing-form').submit()" %>
 </div>

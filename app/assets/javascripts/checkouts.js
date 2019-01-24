@@ -5,11 +5,12 @@ $(function(){
 		$.ajax({
 			method: "post",
 			url: "/checkouts",
+			dataType: "HTML",
 			data: data,
 			complete: function(req){
-				token = req.responseJSON.token
-				console.log(token)
-				window.open('http://localhost:3000/payments?token='+token, "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=200,left=500,width=1000,height=600")
+				// token = req.responseJSON.token
+				// console.log(token)
+				// window.open('http://localhost:3000/payments?token='+token, "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=200,left=500,width=1000,height=600")
 			}
 		})
 	})

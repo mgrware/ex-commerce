@@ -11,6 +11,7 @@ class Chart < ApplicationRecord
     uri                        = URI.parse(url)
     http                       = Net::HTTP.new(uri.host, uri.port)
     response                   = http.post(uri.path, payload.to_json, {"Content-Type"  => "application/json"})
-    return token
+    result = JSON.parse(response.body)
+    self.billing_address.update_attributes(va_number: result["data"]["va_number"])
   end
 end

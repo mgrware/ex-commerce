@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :checkouts,  except: [:show] do
     collection do
       get :success
+      get :result
     end
   end
 end
